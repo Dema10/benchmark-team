@@ -11,12 +11,14 @@
 body {
     background-image: url(./assets/bg.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     font-family: "Outfit", sans-serif;
-}
-
-main {
     padding: 50px 150px;
     position: relative;
+}
+
+.logo {
+    cursor: pointer;
 }
 
 img {
@@ -54,7 +56,7 @@ ul {
     padding-bottom: 30px;
 }
 
-button {
+.procedi {
     position: absolute;
     right:100px;
     background-color: #00FFFF;
@@ -63,7 +65,7 @@ button {
     border: none;
 }
 
-button:hover {
+.procedi:hover {
     box-shadow: 0 0 10px 4px #00FFFF;
     cursor: pointer;
 }
@@ -103,4 +105,68 @@ input[type="checkbox"] {
 
 span {
     font-weight: 700;
+}
+
+.h1Domande {
+    text-align: center;
+    font-size: 45px;
+    padding: 0 45px;
+}
+
+.risposte {
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.risposte button {
+    width: 300px;
+    height: 60px;
+    margin: 10px 30px;
+    border-radius: 30px;
+    background-color: #ffffff2e;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.risposte button:hover{
+    background-color: #d200937d;
+}
+
+.risposte button:active, .risposte button:focus {
+    background-color: #d20094;
+}
+
+.counter {
+    text-align: center;
+    padding: 10px 0;
+    margin-top:15px;
+}
+
+p span {
+    color: #d20094;
+}
+
+/*IPOTESI PAGINA 3 RISULTATO*/
+
+#color {
+    background-color: #000000de;
+}
+.risultato {
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+div h2 {
+    margin-top: 115px;
+    padding: 40px;
+    text-align: center;
+    font-size: 45px;
+    border: 2px solid white;
+    border-radius: 100%;
+    color: white;
+    background-color: #000000de;
 }
