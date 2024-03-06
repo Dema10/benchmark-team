@@ -97,62 +97,14 @@ const questions = [
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
-
-
+let paragrafo = document.getElementsByClassName("counter")[0]
+let check = document.querySelector("#check")
 let div = document.querySelector(".risposte");
 let counter = document.getElementById("counter");
 // punteggio delle domande
 let score = 0;
 // contatore domande
 let index = 0;
-
-
-// LA NOSTRA VERSIONE
-//   function checkObj(numberObj) {
-//     // puntatore ad h1
-//     let h1 = document.querySelector(".h1Domande");
-//     let button = document.createElement("button")
-//     let risposte = [];
-  
-//     for (let proprietà in questions[numberObj]) {
-//       if (proprietà === 'question') {
-//         h1.innerText = questions[numberObj][proprietà];
-//       }
-
-//       if (proprietà === 'correct_answer') {
-//         button.innerText = questions[numberObj][proprietà]
-//         // div.appendChild(button);
-//         risposte.push(button)
-//       }
-
-//       if (proprietà === 'incorrect_answers') {
-//         for (let i = 0; i < questions[numberObj].incorrect_answers.length; i++) {
-//           let newButton = document.createElement("button");
-//           newButton.innerText = questions[numberObj].incorrect_answers[i]; 
-//           // div.appendChild(newButton);
-//           risposte.push(newButton)
-//         }
-//         let casuale =  shuffleArray(risposte);
-//         function shuffleArray(array) {
-//           for (let i = array.length - 1; i > 0; i--) {
-//               const j = Math.floor(Math.random() * (i + 1));
-//               [array[i], array[j]] = [array[j], array[i]];
-//           }
-        
-//           return array;
-//         }
-//         for (let i = 0; i < casuale.length; i++) {
-//           div.appendChild(casuale)
-//         }
-//       }
-    
-    
-//     }
-  
-//     return 1
-  
-// }
-
 
 
 function checkObj(numberObj) {
@@ -213,9 +165,10 @@ risposte.forEach(button => {
       if (index < questions.length) {
         // visualizza la prossima domanda
         checkObj(index)
-      } else {
-        // una volta che le domande sono finite, visualizziamo lo score (WORK IN PROGRESS)
-        alert("il test è finito" + " " + score)
+      } else if (index === questions.length) {
+        h1.innerText = "Hai finito il test"
+        div.innerHTML = ""
+        paragrafo.innerText = "Risultato " + score;
       }
     })
 });
@@ -230,6 +183,4 @@ for (let i = array.length - 1; i > 0; i--) {
 return array;
 }
 
-
-
-checkObj(index);
+ checkObj(index);

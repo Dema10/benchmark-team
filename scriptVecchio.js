@@ -237,3 +237,20 @@ const questions = [
 // }
 
 // console.log(questions[0].incorrect_answers.length)
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Stile della checkbox personalizzata */
+input[type="checkbox"] + label:before {
+  content: '';
+  display: inline-block;
+  width: 13px; /* Larghezza della checkbox */
+  height: 13px; /* Altezza della checkbox */
+  border: 2px solid white; /* Colore del bordo della checkbox */
+  background-color: transparent; /* Colore di sfondo trasparente della checkbox non selezionata */
+  margin-right: 10px;
+  vertical-align:sub;
+  cursor: pointer;
+}

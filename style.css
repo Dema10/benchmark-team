@@ -86,13 +86,16 @@ div {
     align-items: center;
 }
 
-input[type="checkbox"] {
+#check {
     display: none;
-  }
-  
-  /* Stile della checkbox personalizzata */
-  input[type="checkbox"] + label:before {
-    content: '';
+    color: white;
+}
+
+#check.mostra {
+    display: block;
+}
+
+#checkbox {
     display: inline-block;
     width: 13px; /* Larghezza della checkbox */
     height: 13px; /* Altezza della checkbox */
@@ -102,7 +105,7 @@ input[type="checkbox"] {
     vertical-align:sub;
     cursor: pointer;
 }
-
+  
 span {
     font-weight: 700;
 }
