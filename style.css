@@ -177,7 +177,11 @@ div h2 {
 #timer {
     color: white;
     font-size: 40px;
+    position: absolute;
+    top: 10%;
+    right: 10%;
 }
+
 
 @keyframes coriandoliAnimation {
     to {

@@ -112,7 +112,6 @@ let index = 0;
 
 
 function checkObj(numberObj) {
-//let h1 = document.querySelector(".h1Domande");
 startTimer();
 // abbiamo creato un array vuoto per le risposte sia giuste che sbagliate
 let risposte = [];
@@ -171,22 +170,29 @@ risposte.forEach(button => {
       if (index < questions.length) {
         // visualizza la prossima domanda
         checkObj(index)
-      } else if (index === questions.length) {
-        h1.innerText = "Hai finito il test"
+      } else if (score >= 6 && index === questions.length) {
+        setInterval(creareCoriandoli, 100);
+        h1.innerText = "Congratulazioni, hai completato il test!"
         div.innerHTML = ""
-        paragrafo.innerText = "Risultato " + score;
+        paragrafo.innerText = "Il tuo voto è " + score;
+        numeroTimer.style.display = "none";
+      } else {
+        div.innerHTML = ""
+        h1.innerText = "Mi dispiace, non hai passato il test."
+        paragrafo.innerText = "Il tuo voto è " + score
         numeroTimer.style.display = "none";
       }
-      if (score >= 6 && index === questions.length) {
+      /*if (score >= 6 && index === questions.length) {
         setInterval(creareCoriandoli, 100);
-      } /* else if (score < 6 && questions.length) {
-        bocciato.innerText = "Sei stato bocciato!";     // non siamo riusciti a fare la condizione bocciato
-      } */                                              // P.S sono anche le 04.00 PD non possiamo risolvere proprio tutto eh :P
+      }  else if (score < 6 && index === questions.length) {
+        paragrafo.innerText = "Sei stato bocciato!";     // non siamo riusciti a fare la condizione bocciato
+      }*/                                              // P.S sono anche le 04.00 PD non possiamo risolvere proprio tutto eh :P
     })
 });
 
 }
 
+// funzione che permette di mettere le domande nei bottoni in modo casuale
 function shuffleArray(array) {
 for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -216,15 +222,22 @@ function startTimer() {
           index++;
           counter.innerText = index + 1;
           if (index < questions.length) {
-              // Visualizza la prossima domanda
-              checkObj(index);
-          } else if (index === questions.length) {
-            h1.innerText = "Hai finito il test"
+            // visualizza la prossima domanda
+            checkObj(index)
+          } else if (score >= 6 && index === questions.length) {
+            setInterval(creareCoriandoli, 100);
+            h1.innerText = "Congratulazioni, hai completato il test!"
             div.innerHTML = ""
-            paragrafo.innerText = "Risultato " + score;
+            paragrafo.innerText = "Il tuo voto è " + score;
+            numeroTimer.style.display = "none";
+          } else {
+            div.innerHTML = ""
+            h1.innerText = "Mi dispiace, non hai passato il test."
+            paragrafo.innerText = "Il tuo voto è " + score
             numeroTimer.style.display = "none";
           }
-          if (score >= 6 && index === questions.length) {
+
+          /*if (score >= 6 && index === questions.length) {
             setInterval(creareCoriandoli, 100);
           } /* else if (score < 6 && questions.length) {
             bocciato.innerText = "Sei stato bocciato!";     // non siamo riusciti a fare la condizione bocciato
