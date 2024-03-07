@@ -173,3 +173,18 @@ div h2 {
     color: white;
     background-color: #000000de;
 }
+
+#timer {
+    color: white;
+    font-size: 40px;
+}
+
+@keyframes coriandoliAnimation {
+    to {
+        transform: translate(0, 100vh);
+    }
+}
+
+.coriandoli {
+   animation:  coriandoliAnimation 2s linear;
+}

@@ -98,6 +98,8 @@ const questions = [
   },
 ];
 
+let bocciato = document.querySelector(".bocciato");
+let h1 = document.querySelector(".h1Domande");
 let numeroTimer = document.getElementById("timer");
 let paragrafo = document.getElementsByClassName("counter")[0]
 let check = document.querySelector("#check")
@@ -110,7 +112,7 @@ let index = 0;
 
 
 function checkObj(numberObj) {
-let h1 = document.querySelector(".h1Domande");
+//let h1 = document.querySelector(".h1Domande");
 startTimer();
 // abbiamo creato un array vuoto per le risposte sia giuste che sbagliate
 let risposte = [];
@@ -173,7 +175,13 @@ risposte.forEach(button => {
         h1.innerText = "Hai finito il test"
         div.innerHTML = ""
         paragrafo.innerText = "Risultato " + score;
+        numeroTimer.style.display = "none";
       }
+      if (score >= 6 && index === questions.length) {
+        setInterval(creareCoriandoli, 100);
+      } /* else if (score < 6 && questions.length) {
+        bocciato.innerText = "Sei stato bocciato!";     // non siamo riusciti a fare la condizione bocciato
+      } */                                              // P.S sono anche le 04.00 PD non possiamo risolvere proprio tutto eh :P
     })
 });
 
@@ -214,10 +222,18 @@ function startTimer() {
             h1.innerText = "Hai finito il test"
             div.innerHTML = ""
             paragrafo.innerText = "Risultato " + score;
+            numeroTimer.style.display = "none";
           }
+          if (score >= 6 && index === questions.length) {
+            setInterval(creareCoriandoli, 100);
+          } /* else if (score < 6 && questions.length) {
+            bocciato.innerText = "Sei stato bocciato!";     // non siamo riusciti a fare la condizione bocciato
+          } */                                              // P.S sono anche le 04.00 PD non possiamo risolvere proprio tutto eh :P
       }
   }, 1000); // Ogni secondo
 }
+
+checkObj(index);
 
 
 // Rimuovi il timer se un pulsante viene premuto prima che scada il tempo
@@ -225,4 +241,35 @@ function removeTimer() {
   clearTimeout(timer);
 }
 
- checkObj(index);
+
+ function creareCoriandoli() {
+  const coriandoli = document.createElement("div");
+  coriandoli.className = "coriandoli";
+  let inizioX = Math.random() * window.innerWidth;
+  let inizioY = Math.random() * window.innerHeight;
+  let forma = Math.random() * 10 + 5;
+  let colore = coloreCasuale();
+  coriandoli.style.position = 'absolute';
+  coriandoli.style.left = inizioX + 'px';
+  coriandoli.style.top = inizioY + 'px';
+  coriandoli.style.width = forma + 'px';
+  coriandoli.style.height = forma + 'px';
+  coriandoli.style.backgroundColor = colore;
+  coriandoli.style.borderRadius = '25%';
+  coriandoli.style.pointerEvents = 'none';
+  coriandoli.style.opacity = 0.8;
+
+  document.body.appendChild(coriandoli);
+
+  document.addEventListener('animationend', function () {
+      document.body.removeChild(coriandoli);
+  });
+}
+
+
+function coloreCasuale() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return "rgb(" + r + " , " + g + " , " + b + " )";
+}
