@@ -190,8 +190,17 @@ div h2 {
     }
 }
 
+.coriandoli-container {
+    position: absolute;
+    animation: coriandoliAnimation 2s linear;
+}
+
 .coriandoli {
-   animation:  coriandoliAnimation 1s linear;
+   animation:  coriandoliAnimation 2s linear;
+}
+
+.coriandoli2 {
+    position: absolute;
 }
 
 #timer-circle {
