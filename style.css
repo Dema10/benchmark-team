@@ -191,17 +191,17 @@ div h2 {
 
 @keyframes coriandoliAnimation {
     to {
-        transform: translate(0, 100vh);
+        transform: translate(0, 100%);
     }
 }
 
 .coriandoli-container {
     position: absolute;
-    animation: coriandoliAnimation 2s linear;
+    animation: coriandoliAnimation 3s linear;
 }
 
 .coriandoli {
-   animation:  coriandoliAnimation 2s linear;
+    animation: coriandoliAnimation 3s linear;
 }
 
 .coriandoli2 {

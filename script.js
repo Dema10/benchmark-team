@@ -174,7 +174,7 @@ risposte.forEach(button => {
         // visualizza la prossima domanda
         checkObj(index)
       } else if (score >= 6 && score < 10 && index === questions.length) {
-        setInterval(creareCoriandoli, 150);
+        setInterval(creareCoriandoli, 100);
         h1.innerText = "Congratulazioni, hai completato il test!"
         div.innerHTML = ""
         image.classList.add("mostra-img");
@@ -182,7 +182,7 @@ risposte.forEach(button => {
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
       } else if (score == 10 && index === questions.length) {
-        setInterval(creareCoriandoli2, 50);
+        setInterval(creareCoriandoli2, 100);
         h1.innerText = "Congratulazioni, hai completato il test! sei un top Player!"
         div.innerHTML = ""
         paragrafo.innerText = "Il tuo voto è " + score;
@@ -238,7 +238,7 @@ function startTimer() {
               // visualizza la prossima domanda
               checkObj(index)
             } else if (score >= 6 && score < 10 && index === questions.length) {
-              setInterval(creareCoriandoli, 150);
+              setInterval(creareCoriandoli, 100);
               h1.innerText = "Congratulazioni, hai completato il test!"
               div.innerHTML = ""
               paragrafo.innerText = "Il tuo voto è " + score;
@@ -253,7 +253,7 @@ function startTimer() {
 
       // Imposta il colore dei numeri a bianco fino a quando il tempo rimanente è maggiore di 15 secondi
       if (secondsLeft > 15) {
-        document.getElementById('timer').style.color = 'white';
+        document.getElementById('timer').style.color = 'green';
       } else if (secondsLeft > 10) {
         // Imposta il colore dei numeri a arancione per i secondi compresi tra 15 e 10
         document.getElementById('timer').style.color = 'orange';
@@ -281,12 +281,12 @@ function removeTimer() {
 
 
 
- function creareCoriandoli() {
+function creareCoriandoli() {
   const coriandoli = document.createElement("div");
   coriandoli.className = "coriandoli";
   let inizioX = Math.random() * window.innerWidth;
   let inizioY = Math.random() * window.innerHeight;
-  let forma = Math.random() * 10 + 5;
+  let forma = Math.random() * 12 + 10;
   let colore = coloreCasuale();
   coriandoli.style.position = 'absolute';
   coriandoli.style.left = inizioX + 'px';
@@ -294,14 +294,14 @@ function removeTimer() {
   coriandoli.style.width = forma + 'px';
   coriandoli.style.height = forma + 'px';
   coriandoli.style.backgroundColor = colore;
-  coriandoli.style.borderRadius = '25%';
+  coriandoli.style.borderRadius = '50%';
   coriandoli.style.pointerEvents = 'none';
   coriandoli.style.opacity = 0.8;
 
   document.body.appendChild(coriandoli);
 
   document.addEventListener('animationend', function () {
-      document.body.removeChild(coriandoli);
+  document.body.removeChild(coriandoli);
   });
 }
 
