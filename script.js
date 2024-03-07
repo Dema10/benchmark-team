@@ -97,6 +97,8 @@ const questions = [
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
+
+let numeroTimer = document.getElementById("timer");
 let paragrafo = document.getElementsByClassName("counter")[0]
 let check = document.querySelector("#check")
 let div = document.querySelector(".risposte");
@@ -109,6 +111,7 @@ let index = 0;
 
 function checkObj(numberObj) {
 let h1 = document.querySelector(".h1Domande");
+startTimer();
 // abbiamo creato un array vuoto per le risposte sia giuste che sbagliate
 let risposte = [];
 // abbiamo creato for in che va a prendere le proprietà di question
@@ -153,6 +156,7 @@ risposte.forEach(button => {
     // abbiamo aggiunto al bottone creato all'interno di forEach, un addEventListener che ci permette di:
     // al click aumenta l'index (per passare alla domanda successiva) 
     button.addEventListener('click', function() {
+      removeTimer();
       // passiamo alla domanda successiva ad ogni click
       index++;
       // nella pagina si aggiornerà l'indice delle domande es Question 2/10
@@ -181,6 +185,44 @@ for (let i = array.length - 1; i > 0; i--) {
     [array[i], array[j]] = [array[j], array[i]];
 }
 return array;
+}
+
+let timer 
+
+function startTimer() {
+  // Cancella il timer se esiste già uno attivo
+  clearTimeout(timer);
+  
+  let secondsLeft = 30;
+  // Aggiorna il timer ogni secondo
+  timer = setInterval(() => {
+      // Aggiorna il contenuto del timer
+      document.getElementById('timer').innerText = secondsLeft;
+      // Riduci i secondi rimanenti
+      secondsLeft--;
+      
+      // Controlla se il tempo è scaduto
+      if (secondsLeft < 0) {
+          clearInterval(timer); // Cancella il timer
+          // Passa automaticamente alla domanda successiva quando il tempo scade
+          index++;
+          counter.innerText = index + 1;
+          if (index < questions.length) {
+              // Visualizza la prossima domanda
+              checkObj(index);
+          } else if (index === questions.length) {
+            h1.innerText = "Hai finito il test"
+            div.innerHTML = ""
+            paragrafo.innerText = "Risultato " + score;
+          }
+      }
+  }, 1000); // Ogni secondo
+}
+
+
+// Rimuovi il timer se un pulsante viene premuto prima che scada il tempo
+function removeTimer() {
+  clearTimeout(timer);
 }
 
  checkObj(index);
