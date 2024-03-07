@@ -261,3 +261,11 @@ div h2 {
         opacity: 1;
     }
 }
+
+#myimage {
+    display: none;
+}
+
+#myimage.mostra-img {
+    display: inline-block;
+}

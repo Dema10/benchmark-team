@@ -98,6 +98,7 @@ const questions = [
   },
 ];
 
+let image = document.getElementById("myimage");
 let flag = false;
 let a = document.getElementById("tasto");
 let checkbox = document.getElementById("checkbox");
@@ -176,6 +177,8 @@ risposte.forEach(button => {
         setInterval(creareCoriandoli, 150);
         h1.innerText = "Congratulazioni, hai completato il test!"
         div.innerHTML = ""
+        image.classList.add("mostra-img");
+        image.src = "immagine-voto/IMG_5029.jpg";
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
       } else if (score == 10 && index === questions.length) {
@@ -189,6 +192,7 @@ risposte.forEach(button => {
         h1.innerText = "Mi dispiace, non hai passato il test."
         paragrafo.innerText = "Il tuo voto è " + score
         numeroTimer.style.display = "none";
+        image.classList.remove("mostra-img");
       }
     })
 });
@@ -245,6 +249,17 @@ function startTimer() {
               paragrafo.innerText = "Il tuo voto è " + score
               numeroTimer.style.display = "none";
             }
+      }
+
+      // Imposta il colore dei numeri a bianco fino a quando il tempo rimanente è maggiore di 15 secondi
+      if (secondsLeft > 15) {
+        document.getElementById('timer').style.color = 'white';
+      } else if (secondsLeft > 10) {
+        // Imposta il colore dei numeri a arancione per i secondi compresi tra 15 e 10
+        document.getElementById('timer').style.color = 'orange';
+      } else if (secondsLeft >= 0) {
+        // Imposta il colore dei numeri a rosso per gli ultimi 10 secondi
+        document.getElementById('timer').style.color = 'red';
       }
   }, 1000); // Ogni secondo
 
