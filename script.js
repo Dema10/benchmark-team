@@ -180,19 +180,22 @@ risposte.forEach((button, i) => {
         setInterval(creareCoriandoli, 100);
         h1.innerText = "Congratulazioni, hai completato il test!"
         div.innerHTML = ""
+        paragrafo.classList.add('bravo');
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
       } else if (score == 10 && index === questions.length) {
         setInterval(creareCoriandoli2, 100);
         h1.innerText = "Congratulazioni, hai completato il test! sei un top Player!"
         div.innerHTML = ""
+        paragrafo.classList.add('congratulazioni')
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
         playAudioGT()
       } else {
         div.innerHTML = ""
         h1.innerText = "Mi dispiace, non hai passato il test."
-        paragrafo.innerText = "Il tuo voto è " + score
+        paragrafo.classList.add('cattivo');
+        paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
         image.classList.add("mostraImg");
         // Riprodurre l'audio
