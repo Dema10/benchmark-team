@@ -7,7 +7,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/* mettiamo nel body l'immagine di sfondo e mettiamo il font che ci hanno fornito*/
 body {
     background-image: url(./assets/bg.jpg);
     background-size: cover;
@@ -17,6 +17,7 @@ body {
     position: relative;
 }
 
+/* posizionamo in absolute il logo di EPICODE per far si che non si scontra con altre immagini */
 .logo {
     cursor: pointer;
     position: absolute;
@@ -72,6 +73,7 @@ ul {
     padding-bottom: 30px;
 }
 
+/* nascondiamo il bottone e riapparirà quando verrà cliccato il checkbox*/
 #nascondi {
     display: none;
 }
@@ -86,16 +88,18 @@ ul {
     border: none;
 }
 
+/* il bottone si illumina quando ci passi sopra con il mouse */
 #nascondi.procedi:hover {
     box-shadow: 0 0 10px 4px #00FFFF;
     cursor: pointer;
 }
-
+/* il bottone pulserà quando compare */
 #nascondi.procedi {
 	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
 	        animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
+/* il bottone farà un animazione */
 #nascondi.procedi-rotola {
     -webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
     animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) sboth;
@@ -103,7 +107,7 @@ ul {
 
 #nascondi.procedi-pulsa {
     -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-    animation: heartbeat 1.5s ease-in-out infinite both;
+            animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 #nascondi.procedi-chiudi {
@@ -111,6 +115,8 @@ ul {
     animation: roll-out-blurred-right 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
+/* Questo è un frammento di codice CSS che definisce un'animazione usando @keyframes, 
+che è un metodo per definire una sequenza di cambiamenti di stile che possono essere applicati a un elemento HTML nel corso del tempo. */
 @keyframes roll-out-blurred-right {
         0% {
             transform: translateX(0) rotate(0deg);
@@ -125,7 +131,7 @@ ul {
     
 }
 
-
+/* imposto i valori del link */
 a {
     text-decoration: none;
     color: black;
@@ -138,18 +144,10 @@ label {
     font-size: 13px;
 }
 
+/* questo è il div che contiene il label e l'input checkbox */
 div {
     display: flex;
     align-items: center;
-}
-
-#check {
-    display: none;
-    color: white;
-}
-
-#check.mostra {
-    display: block;
 }
 
 #checkbox {
@@ -172,7 +170,7 @@ span {
     font-size: 45px;
     padding: 0 45px 0px 0;
 }
-
+/* div */
 .risposte {
     padding: 20px 100px 0 100px;
     display: flex;
@@ -200,6 +198,7 @@ span {
     background-color: #d20094;
 }
 
+/* paragrafo che contiene la scritta QUESTION */
 .counter {
     text-align: center;
     padding: 10px 0;
@@ -207,10 +206,12 @@ span {
     top: 100px; 
 }
 
+/* il contatore delle domande da 1 a 10 */
 #counter {
     color: white;
 }
 
+/* classe creata in js per creare uno stile diverso quando lo score è 10/10 */
 .congratulazioni {
     font-size: 70px;
     color: green;
@@ -220,6 +221,7 @@ span {
             animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
+/* classe creata in js per creare uno stile diverso quando lo score è superiore a 6 e minore di 10*/
 .bravo {
     font-size: 70px;
     font-family: "Outfit", sans-serif;
@@ -231,6 +233,7 @@ span {
 
 }
 
+/* classe creata in js per creare uno stile diverso quando lo score è minore di 6 */
 .cattivo {
     font-size: 70px;
     color: red;
@@ -240,6 +243,7 @@ span {
 	        animation: vibrate-1 0.3s linear infinite both;
 }
 
+/* span nel counter che contiene il numero 10 */
 p span {
     color: #d20094;
 }

@@ -98,15 +98,19 @@ const questions = [
   },
 ];
 
+// andiamo a puntare l'immagine con Abdul
 let image = document.querySelector("#myimage");
-let flag = false;
+// andiamo a puntare l'anchor in html
 let a = document.getElementById("tasto");
-let checkbox = document.getElementById("checkbox");
+// andiamo a puntare h1 delle comande
 let h1 = document.querySelector(".h1Domande");
+// andiamo a punatare lo span con id timer 
 let numeroTimer = document.getElementById("timer");
+// vado a puntare il paragrafo con dentro la scritta counter
 let paragrafo = document.getElementsByClassName("counter")[0]
-let check = document.querySelector("#check")
+// andiamo a punatare il div che conterrà le risposte
 let div = document.querySelector(".risposte");
+// andiamo a puntare lo span con dentro i numeri delle domande
 let counter = document.getElementById("counter");
 // punteggio delle domande
 let score = 0;
@@ -176,29 +180,37 @@ risposte.forEach((button, i) => {
       if (index < questions.length) {
         // visualizza la prossima domanda
         checkObj(index)
+        // abbiamo in modo che se il voto è maggiore uguale a 6 e minore di 10 succedono determinate logiche
       } else if (score >= 6 && score < 10 && index === questions.length) {
+        // partono i coriandoli
         setInterval(creareCoriandoli, 100);
         h1.innerText = "Congratulazioni, hai completato il test!"
+        // qui cancelliamo cosa c'è all'interno del div per aggiungere altre cose
         div.innerHTML = ""
         paragrafo.classList.add('bravo');
         paragrafo.innerText = "Il tuo voto è " + score;
+        // il timer scompare
         numeroTimer.style.display = "none";
+        // se il risultato è 10 succedono determinate logiche
       } else if (score == 10 && index === questions.length) {
         setInterval(creareCoriandoli2, 100);
-        h1.innerText = "Congratulazioni, hai completato il test! sei un top Player!"
+        h1.innerText = "Congratulazioni, hai completato il test! \n Sei un top Player!"
         div.innerHTML = ""
         paragrafo.classList.add('congratulazioni')
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
+        // parte la funzione audio creata nella riga 
         playAudioGT()
+        // qui facciamo in modo che se il voto è inferiore a 6 otteniamo determinate logiche
       } else {
         div.innerHTML = ""
         h1.innerText = "Mi dispiace, non hai passato il test."
         paragrafo.classList.add('cattivo');
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
+        // esce la foto di un bel uomo
         image.classList.add("mostraImg");
-        // Riprodurre l'audio
+        // parte un'altro audio che abbiamo creato nella riga...
         playAudio();
       }
     })
@@ -215,17 +227,18 @@ for (let i = array.length - 1; i > 0; i--) {
 return array;
 }
 
-let timer 
+let timer;
 
 function startTimer() {
   // Cancella il timer se esiste già uno attivo
   clearTimeout(timer);
-  
+  // dichiariamo una variabile secondi rimasti impostata a 30
   let secondsLeft = 30;
+  // oltre ai secondi rimanenti puntiamo al cerchio bianco attorno ad essi
   const timerCircle = document.getElementById('timer-circle');
   // Aggiorna il timer ogni secondo
   timer = setInterval(() => {
-      // Aggiorna il contenuto del timer
+      // Aggiorniamo il contenuto del timer
       document.getElementById('timer').innerText = secondsLeft;
       const formattaSecondi = secondsLeft < 10? `0${secondsLeft}` : secondsLeft; // i decimali avanti avranno uno 0
       console.log(formattaSecondi);
@@ -272,7 +285,8 @@ function startTimer() {
         document.getElementById('timer').style.color = 'red';
       }
   }, 1000); // Ogni secondo
-
+  
+  // permette di far funzionare l'animazione del cerchio del timer
   timerCircle.style.animation = `timerCircleAnimation ${secondsLeft + 1}s linear infinite`;
   timerCircle.style.display = 'block'; // Mostra il cerchio
   console.log(timerCircle);
@@ -290,7 +304,7 @@ function removeTimer() {
 
 
 
-
+// funzione che crea i coriandoli quando passi il test
 function creareCoriandoli() {
   const coriandoli = document.createElement("div");
   coriandoli.className = "coriandoli";
@@ -314,7 +328,7 @@ function creareCoriandoli() {
   document.body.removeChild(coriandoli);
   });
 }
-
+// funzione che crea delle stelle quando passi il test con il voto massimo
 function creareCoriandoli2() {
   const coriandoliContainer = document.createElement("div");
   coriandoliContainer.className = "coriandoli-container";
@@ -355,6 +369,7 @@ function coloreCasuale() {
   return "rgb(" + r + " , " + g + " , " + b + " )";
 }
 
+// funzione che parte quando fallisci il test
 function playAudio() {
   // Ottenere l'elemento audio dal DOM utilizzando l'ID
   const myAudio = document.getElementById('myAudio');
@@ -363,6 +378,7 @@ function playAudio() {
   myAudio.play();
 }
 
+// funzione che parte quando passi il test con il voto massimo
 function playAudioGT() {
   // Ottenere l'elemento audio dal DOM utilizzando l'ID
   const myAudio = document.getElementById('myAudio2');

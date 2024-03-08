@@ -1,6 +1,9 @@
+// vado a puntare la checkbox
 let check = document.getElementById("checkbox");
+// vado a puntare il button Proceed
 let button = document.getElementById("nascondi");
 
+// creo un addeventlistener al click di checkbox per far si che che compaia il bottone
 checkbox.addEventListener("click", function () {
   button.classList.toggle("procedi");
   toggleAnimation();
