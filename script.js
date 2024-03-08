@@ -124,6 +124,7 @@ for (let proprietà in questions[numberObj]) {
     if (proprietà === 'question') {
       // abbiamo richiamato la variabile h1 per aggiungerci la domanda 
         h1.innerText = questions[numberObj][proprietà];
+        h1.classList.add(`domande`);
     }
     // abbiamo creato un if che controlla che la proprietà sia correct_answer
     if (proprietà === 'correct_answer') {
@@ -155,12 +156,14 @@ div.innerHTML = "";
 risposte = shuffleArray(risposte);
 
 // Aggiungiamo le risposte al div grazie al forEach. in base al numero di risposte che trova lui crea tot bottoni corrispondenti
-risposte.forEach(button => {
+risposte.forEach((button, i) => {
     div.appendChild(button);
+    button.classList.add(i % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
     // abbiamo aggiunto al bottone creato all'interno di forEach, un addEventListener che ci permette di:
     // al click aumenta l'index (per passare alla domanda successiva) 
     button.addEventListener('click', function() {
       removeTimer();
+      h1.classList.remove(`domande`);
       // passiamo alla domanda successiva ad ogni click
       index++;
       // nella pagina si aggiornerà l'indice delle domande es Question 2/10
@@ -248,6 +251,8 @@ function startTimer() {
               h1.innerText = "Mi dispiace, non hai passato il test."
               paragrafo.innerText = "Il tuo voto è " + score
               numeroTimer.style.display = "none";
+              image.classList.add("mostraImg");
+              playAudio();
             }
       }
 
@@ -263,7 +268,7 @@ function startTimer() {
       }
   }, 1000); // Ogni secondo
 
-  timerCircle.style.animation = `timerCircleAnimation ${secondsLeft + 2}s linear infinite`;
+  timerCircle.style.animation = `timerCircleAnimation ${secondsLeft + 1}s linear infinite`;
   timerCircle.style.display = 'block'; // Mostra il cerchio
   console.log(timerCircle);
 }
