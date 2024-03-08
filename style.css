@@ -334,7 +334,7 @@ div h2 {
     display: inline-block;
 }
 
-#myAudio {
+#myAudio, #myAudio2 {
     display: none;
 }
 

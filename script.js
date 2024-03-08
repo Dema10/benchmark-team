@@ -188,6 +188,7 @@ risposte.forEach((button, i) => {
         div.innerHTML = ""
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
+        playAudioGT()
       } else {
         div.innerHTML = ""
         h1.innerText = "Mi dispiace, non hai passato il test."
@@ -250,6 +251,7 @@ function startTimer() {
               div.innerHTML = ""
               h1.innerText = "Mi dispiace, non hai passato il test."
               paragrafo.innerText = "Il tuo voto è " + score
+              paragrafo.style.fontSize = "410px"
               numeroTimer.style.display = "none";
               image.classList.add("mostraImg");
               playAudio();
@@ -353,6 +355,14 @@ function coloreCasuale() {
 function playAudio() {
   // Ottenere l'elemento audio dal DOM utilizzando l'ID
   const myAudio = document.getElementById('myAudio');
+
+  // Riprodurre l'audio
+  myAudio.play();
+}
+
+function playAudioGT() {
+  // Ottenere l'elemento audio dal DOM utilizzando l'ID
+  const myAudio = document.getElementById('myAudio2');
 
   // Riprodurre l'audio
   myAudio.play();
