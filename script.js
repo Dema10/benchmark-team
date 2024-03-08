@@ -98,7 +98,7 @@ const questions = [
   },
 ];
 
-let image = document.getElementById("myimage");
+let image = document.querySelector("#myimage");
 let flag = false;
 let a = document.getElementById("tasto");
 let checkbox = document.getElementById("checkbox");
@@ -177,8 +177,6 @@ risposte.forEach(button => {
         setInterval(creareCoriandoli, 100);
         h1.innerText = "Congratulazioni, hai completato il test!"
         div.innerHTML = ""
-        image.classList.add("mostra-img");
-        image.src = "immagine-voto/IMG_5029.jpg";
         paragrafo.innerText = "Il tuo voto è " + score;
         numeroTimer.style.display = "none";
       } else if (score == 10 && index === questions.length) {
@@ -192,7 +190,9 @@ risposte.forEach(button => {
         h1.innerText = "Mi dispiace, non hai passato il test."
         paragrafo.innerText = "Il tuo voto è " + score
         numeroTimer.style.display = "none";
-        image.classList.remove("mostra-img");
+        image.classList.add("mostraImg");
+        // Riprodurre l'audio
+        playAudio();
       }
     })
 });
@@ -345,3 +345,10 @@ function coloreCasuale() {
   return "rgb(" + r + " , " + g + " , " + b + " )";
 }
 
+function playAudio() {
+  // Ottenere l'elemento audio dal DOM utilizzando l'ID
+  const myAudio = document.getElementById('myAudio');
+
+  // Riprodurre l'audio
+  myAudio.play();
+}

@@ -152,6 +152,7 @@ span {
     text-align: center;
     padding: 10px 0;
     margin-top:15px;
+    color: white;
 }
 
 p span {
@@ -264,8 +265,15 @@ div h2 {
 
 #myimage {
     display: none;
+    min-width: 50%;
+    position: relative;
+    left: 25%;
 }
 
-#myimage.mostra-img {
+#myimage.mostraImg {
     display: inline-block;
+}
+
+#myAudio {
+    display: none;
 }
